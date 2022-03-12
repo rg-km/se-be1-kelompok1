@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #scoreBoard{
+                padding: 10;
+                margin: 10;
+            }
+        </style>
+    </head>
+        <script type="text/javascript" src="script.js"></script>
+    <body onload="draw();">
+        <h1>Snake Game</h1>
+        <!-- menambahkan gambar apel -->
+        <img id="apple" style="display: none;" width="20" height="20" src="assets/apple.png" alt="Apple">
+        <!-- menambahkan gambar hati sebagai nyawa -->
+        <!-- menambahkan board untuk ular dan skor  -->
+        <canvas id="snakeBoard" width="500" height="500" style="border:1px solid #000000;"></canvas>
+        <canvas id="scoreBoard" width="50" height="50" style="border:1px solid #000000;"></canvas>
+    </body>
+</html>
