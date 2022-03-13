@@ -53,6 +53,10 @@ function drawCell(ctx, x, y, color) {
     ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
 
+function drawImg(ctx, img, x, y) {
+    ctx.drawImage(img, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+}
+
 function drawScore(snake) {
     let scoreCanvas;
     if (snake.color == snake.color) {
@@ -70,10 +74,11 @@ function draw() {
     setInterval(function() {
         let snakeCanvas = document.getElementById("snakeBoard");
         let ctx = snakeCanvas.getContext("2d");
+        let snakeHead = document.getElementById("snake-head");
 
         ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
         
-        drawCell(ctx, snake.head.x, snake.head.y, snake.color);
+        drawImg(ctx,snakeHead, snake.head.x, snake.head.y);
         for (let i = 1; i < snake.body.length; i++) {
             drawCell(ctx, snake.body[i].x, snake.body[i].y, snake.color);
         }
