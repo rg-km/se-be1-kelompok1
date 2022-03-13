@@ -171,8 +171,8 @@ function checkCollision(snakes) {
     }
     if (isCollide) {
         if(life <= 1) {
-            // var audio = new Audio('assets/game-over.mp3');
-            // audio.play();
+            var audio = new Audio('assets/game-over.mp3');
+            audio.play();
             alert("Game over");
             snake = initSnake("green");
             snakeReturn = initSnakeReturn();
