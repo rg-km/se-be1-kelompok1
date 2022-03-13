@@ -10,6 +10,7 @@ const DIRECTION = {
     DOWN: 3,
 }
 const MOVE_INTERVAL = 120;
+let life = 3;
 
 function initPosition() {
     return {
@@ -36,10 +37,18 @@ function initSnake(color) {
         color: color,
         ...initHeadAndBody(),
         direction: initDirection(),
-        score: 0,
+        // score: 0,
     }
 }
+
+function initSnakeReturn() {
+    return {
+        score: 0
+    }
+}
+
 let snake = initSnake("green");
+let snakeReturn = initSnakeReturn();
 
 let apples = [{
     position: initPosition(),
@@ -66,8 +75,8 @@ function drawScore(snake) {
 
     scoreCtx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     scoreCtx.font = "30px Arial";
-    scoreCtx.fillStyle = snake.color
-    scoreCtx.fillText(snake.score, 10, scoreCanvas.scrollHeight / 2);
+    scoreCtx.fillStyle = "green";
+    scoreCtx.fillText(snakeReturn.score, 10, scoreCanvas.scrollHeight / 2);
 }
 
 function draw() {
@@ -75,6 +84,7 @@ function draw() {
         let snakeCanvas = document.getElementById("snakeBoard");
         let ctx = snakeCanvas.getContext("2d");
         let snakeHead = document.getElementById("snake-head");
+        let lifes = document.getElementById("life");
 
         ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
         
@@ -83,12 +93,16 @@ function draw() {
             drawCell(ctx, snake.body[i].x, snake.body[i].y, snake.color);
         }
 
+        for(let i = 0; i < life; i++){
+            drawImg(ctx, lifes, i, 0);
+        }
+
         for (let i = 0; i < apples.length; i++) {
             let apple = apples[i];
             var img = document.getElementById("apple");
             ctx.drawImage(img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
-        drawScore(snake);
+        drawScore(snakeReturn);
     }, REDRAW_INTERVAL);
 }
 
@@ -112,7 +126,7 @@ function eat(snake, apples) {
         let apple = apples[i];
         if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
             apple.position = initPosition();
-            snake.score++;
+            snakeReturn.score++;
             snake.body.push({x: snake.head.x, y: snake.head.y});
         }
     }
@@ -155,11 +169,19 @@ function checkCollision(snakes) {
         }
     }
     if (isCollide) {
-        // var audio = new Audio('assets/game-over.mp3');
-        // audio.play();
-
-        alert("Game over");
-        snake = initSnake("green");
+        if(life <= 1) {
+            // var audio = new Audio('assets/game-over.mp3');
+            // audio.play();
+            alert("Game over");
+            snake = initSnake("green");
+            snakeReturn = initSnakeReturn();
+            life = 3;
+            // MOVE_INTERVAL = 120;
+        } else {
+            // snakes.score = 0;
+            snake = initSnake("green");
+            life--;
+        }
     }
     return isCollide;
 }
