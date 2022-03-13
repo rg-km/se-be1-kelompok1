@@ -17,12 +17,17 @@
     </head>
         <script type="text/javascript" src="script.js"></script>
     <body onload="draw();">
-        <h1>Snake Game</h1>
         <!-- menambahkan gambar apel -->
         <img id="apple" style="display: none;" width="20" height="20" src="assets/apple.png" alt="Apple">
         <!-- menambahkan gambar hati sebagai nyawa -->
+        <img id="lives" style="display: none;" width="20" height="20" src="assets/heart.png" alt="Lives">
         <!-- menambahkan board untuk ular dan skor  -->
+        <img id="snake-head" style="display: none;" width="20" height="20" src="assets/snake.png" alt="snake">
         <canvas id="snakeBoard" width="500" height="500" style="border:1px solid #000000;"></canvas>
         <canvas id="scoreBoard" width="50" height="50" style="border:1px solid #000000;"></canvas>
+        <!-- menambahkan papan level -->
+        <h3>Level: <span id="snake-level"></span></h3>
+        <!-- menambahkan papan speed -->
+        <h3>Speed: <span id="snake-speed"></span> ms</h1>
     </body>
 </html>
