@@ -103,6 +103,7 @@ function draw() {
             ctx.drawImage(img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
         drawScore(snakeReturn);
+        document.getElementById("snake-speed").innerHTML = "Speed: " + MOVE_INTERVAL + "ms";
     }, REDRAW_INTERVAL);
 }
 
