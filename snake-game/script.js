@@ -1,5 +1,5 @@
 const CELL_SIZE = 20;
-const CANVAS_SIZE = 600;
+const CANVAS_SIZE = 500;
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
@@ -42,11 +42,9 @@ function initSnake(color) {
 let snake = initSnake("green");
 
 let apples = [{
-    // color: "red",
     position: initPosition(),
 },
 {
-    // color: "green",
     position: initPosition(),
 }]
 
@@ -58,7 +56,7 @@ function drawCell(ctx, x, y, color) {
 function drawScore(snake) {
     let scoreCanvas;
     if (snake.color == snake.color) {
-        scoreCanvas = document.getElementById("score1Board");
+        scoreCanvas = document.getElementById("scoreBoard");
     }
     let scoreCtx = scoreCanvas.getContext("2d");
 
