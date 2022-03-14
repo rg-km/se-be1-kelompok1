@@ -108,6 +108,7 @@ function draw() {
             var img = document.getElementById("apple");
             ctx.drawImage(img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
+
         if (level > 1) {
             let snakeCanvas = document.getElementById("snakeBoard");
             let ctx = snakeCanvas.getContext("2d");
@@ -160,7 +161,7 @@ function eat(snake, apples) {
                 level = 1;
                 countEatApple = 0
                 setTimeout(() => {
-                    alert("Game selesai");
+                    alert("GAME OVER!");
                 }, 300)
                 countEatApple = 0
                 level = 1
@@ -216,9 +217,9 @@ function checkCollision(snakes) {
         if(life === 0) {
             var audio = new Audio('assets/game-over.mp3');
             audio.play();
-            alert("Game over");
+            alert("GAME OVER!!");
             setTimeout(() => {
-                alert("Game over");
+                alert("GAME OVER!!");
             }, 300)
             nyawa = 3
             level = 1
