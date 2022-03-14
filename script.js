@@ -150,7 +150,7 @@ function eat(snake, apples) {
             if (countEatApple === 5) {
                 countEatApple = 0
                 level++;
-                var audio = new Audio('assets/level-up.mp3');
+                var audio = new Audio('level-up.mp3');
                 audio.play();
                 setTimeout(() => {
                     alert(`Yeayyy!! Berhasil naik level ${level}, lanjutkan!`);
@@ -215,7 +215,7 @@ function checkCollision(snakes) {
     if (isCollide) {
         life--;
         if(life === 0) {
-            var audio = new Audio('assets/game-over.mp3');
+            var audio = new Audio('game-over.mp3');
             audio.play();
             alert("GAME OVER!!");
             setTimeout(() => {
