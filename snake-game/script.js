@@ -221,8 +221,9 @@ function checkCollision(snakes) {
             setTimeout(() => {
                 alert("GAME OVER!!");
             }, 300)
-            nyawa = 3
+            life = 3
             level = 1
+            snakeReturn = initSnakeReturn();
         } 
         countEatApple = 0
         snake1 = initSnake("green", "snake");
